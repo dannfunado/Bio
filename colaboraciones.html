@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colaboraciones - UGC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="theme-color" content="#181c24" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #181c24;
+      color: #f3f3f3;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background: #23283a;
+      padding: 1rem 0;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      margin-bottom: 2rem;
+      font-family: inherit;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      animation: fadeInDown 0.8s;
+    }
+    nav a {
+      color: #fcb045;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 0.5em 1.2em;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+    nav a:hover, nav a.active {
+      background: linear-gradient(90deg, #fcb045 0%, #9147FF 100%);
+      color: #23283a;
+      box-shadow: 0 2px 12px rgba(252,176,69,0.15);
+      text-shadow: 0 1px 8px rgba(252,176,69,0.10);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    header {
+      background: #23283a;
+      border-radius: 14px;
+      padding: 1.5rem 1rem 1rem 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      color: #f3f3f3;
+      text-align: center;
+      margin: 0 auto 2rem auto;
+      max-width: 700px;
+      animation: fadeInUp 1s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .colaboraciones {
+      background: #23283a;
+      border-radius: 14px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      color: #f3f3f3;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      animation: popIn 0.7s;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      80% { transform: scale(1.08); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .colaboraciones .justificado {
+      text-align: justify;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .appgallery-colab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+      background: #181c24;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      border: 2px solid #23283a;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .appgallery-colab img {
+      width: 180px;
+      height: auto;
+      aspect-ratio: 1199/367;
+      object-fit: contain;
+      margin-bottom: 0.7rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.3rem;
+      display: block;
+    }
+    .appgallery-colab .colab-nombre {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .appgallery-colab .colab-links {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .appgallery-colab .colab-link-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      color: #fcb045;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s;
+      padding: 0.2em 0.5em;
+      border-radius: 6px;
+      background: #23283a;
+    }
+    .appgallery-colab .colab-link-icon:hover {
+      color: #fff;
+      background: #fcb045;
+    }
+    .appgallery-colab .colab-link-icon .fa-brands,
+    .appgallery-colab .colab-link-icon .fa-solid {
+      font-size: 1.3em;
+      margin-right: 0.2em;
+    }
+    .logos-colaboraciones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      align-items: flex-start;
+    }
+    .logo-colab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      background: #181c24;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 2px solid #23283a;
+      min-width: 260px;
+      max-width: 320px;
+      width: 100%;
+    }
+    .logo-colab:hover {
+      transform: scale(1.06) translateY(-4px);
+      box-shadow: 0 6px 18px rgba(252,176,69,0.10);
+      border-color: #fcb045;
+    }
+    .logo-colab .colab-nombre {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      text-align: center;
+    }
+    .colab-links {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+    .colab-link-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      color: #fcb045;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s;
+      padding: 0.2em 0.5em;
+      border-radius: 6px;
+      background: #23283a;
+    }
+    .colab-link-icon:hover {
+      color: #fff;
+      background: #fcb045;
+    }
+    .colab-link-icon .fa-brands,
+    .colab-link-icon .fa-solid {
+      font-size: 1.3em;
+      margin-right: 0.2em;
+    }
+    .tiktok-preview {
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 900px) {
+      nav { gap: 1rem; }
+      .logos-colaboraciones { gap: 1.2rem; }
+      .colaboraciones { padding: 1.2rem 0.5rem; }
+      header { padding: 1rem 0.5rem 0.7rem 0.5rem; }
+      .logo-colab { min-width: 180px; max-width: 100%; }
+      .appgallery-colab { max-width: 95%; }
+    }
+    @media (max-width: 600px) {
+      nav { flex-direction: column; gap: 0.5rem; border-radius: 0 0 12px 12px; }
+      .colaboraciones { padding: 1rem 0.2rem; }
+      header { padding: 0.7rem 0.2rem 0.5rem 0.2rem; }
+      .logos-colaboraciones { flex-direction: column; gap: 0.7rem; }
+      .logo-colab { width: 100%; min-width: unset; max-width: unset; }
+      .appgallery-colab { max-width: 100%; }
+      .appgallery-colab img { width: 100px; }
+    }
+  </style>
+  <script>
+    // Marca el enlace activo en el navbar
+    document.addEventListener("DOMContentLoaded", function() {
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        if (link.getAttribute("href") === "colaboraciones.html") {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // PWA: Registrar el service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Sobre mí</a>
+    <a href="colaboraciones.html" class="active">Colaboraciones</a>
+    <a href="categorias.html">Categorías</a>
+  </nav>
+
+  <header>
+    <h1><i class="fas fa-handshake"></i> Colaboraciones</h1>
+  </header>
+
+  <section class="colaboraciones">
+    <p class="justificado">
+      Como caster, streamer y creador de contenido, he colaborado con marcas líderes en el sector de tecnologías y gadgets, así como con desarrolladoras y plataformas como AppGallery, donde soy partner y moderador oficial.<br><br>
+      Mi enfoque profesional, creatividad y compromiso con la comunidad me permiten crear campañas auténticas y de alto impacto. Si buscas una colaboración estratégica y efectiva para tu marca, estaré encantado de sumar valor y conectar tu mensaje con una audiencia apasionada y en constante crecimiento.
+    </p>
+
+   <!-- ...código anterior... -->
+    <!-- AppGallery destacado y centrado -->
+    <div class="appgallery-colab">
+      <img src="img/appgallery.png" alt="AppGallery logo" style="background: transparent; width: 260px; max-width: 90%; height: auto;">
+      <span class="colab-nombre">AppGallery</span>
+      <div class="colab-links">
+        <a class="colab-link-icon" href="https://discord.gg/twkaDSFG" target="_blank" title="Discord">
+          <i class="fab fa-discord"></i> Unirse en Discord
+        </a>
+      </div>
+    </div>
+
+    <div class="logos-colaboraciones">
+      <!-- Wyze Mexico -->
+      <div class="logo-colab">
+        <span class="colab-nombre">Wyze México</span>
+        <div class="colab-links">
+          <a class="colab-link-icon" href="https://www.tiktok.com/@wyze.mexico?is_from_webapp=1&sender_device=pc" target="_blank" title="TikTok">
+            <i class="fab fa-tiktok"></i> Seguir en TikTok
+          </a>
+        </div>
+        <div class="tiktok-preview">
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@wyze.mexico"
+            data-unique-id="wyze.mexico"
+            data-embed-type="creator"
+            style="max-width: 320px; min-width: 220px;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@wyze.mexico">Ver perfil en TikTok</a>
+            </section>
+          </blockquote>
+        </div>
+      </div>
+      <!-- Terport -->
+      <div class="logo-colab">
+        <span class="colab-nombre">Terport</span>
+        <div class="colab-links">
+          <a class="colab-link-icon" href="https://www.tiktok.com/@terport_oficial?is_from_webapp=1&sender_device=pc" target="_blank" title="TikTok">
+            <i class="fab fa-tiktok"></i> Seguir en TikTok
+          </a>
+          <a class="colab-link-icon" href="https://www.mercadolibre.com.mx/tienda/terport?item_id=MLM1919299803&category_id=MLM1648&official_store_id=56781&client=recoview-selleritems&recos_listing=true" target="_blank" title="Mercado Libre">
+            <i class="fas fa-store"></i> Mercado Libre
+          </a>
+          <a class="colab-link-icon" href="https://www.amazon.com.mx/stores/page/A5B56B16-9699-4F5F-8B6F-27784E6B0BC7" target="_blank" title="Amazon">
+            <i class="fab fa-amazon"></i> Amazon
+          </a>
+        </div>
+        <div class="tiktok-preview">
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@terport_oficial"
+            data-unique-id="terport_oficial"
+            data-embed-type="creator"
+            style="max-width: 320px; min-width: 220px;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@terport_oficial">Ver perfil en TikTok</a>
+            </section>
+          </blockquote>
+        </div>
+      </div>
+      <!-- G-tide -->
+      <div class="logo-colab">
+        <span class="colab-nombre">G-tide</span>
+        <div class="colab-links">
+          <a class="colab-link-icon" href="https://www.tiktok.com/@gtidemex" target="_blank" title="TikTok">
+            <i class="fab fa-tiktok"></i> Seguir en TikTok
+          </a>
+        </div>
+        <div class="tiktok-preview">
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@gtidemex"
+            data-unique-id="gtidemex"
+            data-embed-type="creator"
+            style="max-width: 320px; min-width: 220px;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@gtidemex">Ver perfil en TikTok</a>
+            </section>
+          </blockquote>
+        </div>
+      </div>
+      <!-- Mookcol -->
+      <div class="logo-colab">
+        <span class="colab-nombre">Mookcol</span>
+        <div class="colab-links">
+          <a class="colab-link-icon" href="https://www.tiktok.com/@mookcol02" target="_blank" title="TikTok">
+            <i class="fab fa-tiktok"></i> Seguir en TikTok
+          </a>
+        </div>
+        <div class="tiktok-preview">
+          <blockquote class="tiktok-embed"
+            cite="https://www.tiktok.com/@mookcol02"
+            data-unique-id="mookcol02"
+            data-embed-type="creator"
+            style="max-width: 320px; min-width: 220px;">
+            <section>
+              <a target="_blank" href="https://www.tiktok.com/@mookcol02">Ver perfil en TikTok</a>
+            </section>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+  </section>
+
+  <footer>
+    <p>Contacto: <a href="mailto:tuemail@ejemplo.com">tuemail@ejemplo.com</a></p>
+  </footer>
+</body>
+</html>

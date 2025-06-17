@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(#2a0000, #000);
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  background: #ff1a1a;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+nav a:hover {
+  color: #ffcc00;
+}
+
+main {
+  padding: 2rem;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+h1 {
+  color: #ffcc00;
+}
+
+footer {
+  background: #111;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.titulo-centro {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.foto-perfil {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+header {
+  text-align: center;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-family: 'Orbitron', sans-serif;
+}
+.sobre-mi p {
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 10px;
+}
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 8px 0;
+  }
+
+  .foto-perfil {
+    width: 120px;
+    height: 120px;
+  }
+
+  .sobre-mi p {
+    font-size: 15px;
+    padding: 0 15px;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  background-color: #1a0000;
+  color: #fff;
+}
+
+header h1 {
+  text-align: center;
+  color: #ffcc00;
+  margin-top: 20px;
+}
+
+nav {
+  background-color: #cc0000;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.sobre-mi {
+  text-align: center;
+  padding: 20px;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.justificado {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 0 20px;
+}
+
+footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+.lista-categorias {
+  list-style: none;
+  padding: 0;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lista-categorias li {
+  background-color: #330000;
+  color: #ffcc00;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.tiktok-galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.colaboraciones p,
+.categorias p {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 0 20px;
+}
+  .redes-sociales ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      list-style: none;
+    }
+    .redes-sociales ul li {
+      margin: 0;
+    }
+    .redes-sociales ul li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .redes-sociales ul li a i {
+      font-size: 3rem; /* Aumentado de 2.5rem a 3rem */
+      margin-bottom: 0.3rem;
+    }
+    .redes-sociales ul li a:hover {
+      color: #007bff;
+    }
+    .redes-sociales h2 {
+      text-align: center;
+    }
+
+     /* Animaciones para los iconos de redes sociales */
+    .redes-sociales a i {
+      transition: transform 0.3s, color 0.3s;
+    }
+    /* Hover para PC */
+    .redes-sociales a:hover i {
+      transform: scale(1.2) rotate(-10deg);
+      color: #ff4081;
+    }
+    /* Active y focus para móvil */
+    .redes-sociales a:active i,
+    .redes-sociales a:focus i {
+      transform: scale(1.2) rotate(10deg);
+      color: #40c4ff;
+    }
+      /* Colores originales de cada red social */
+    .redes-sociales .fa-tiktok { color: #010101; }
+    .redes-sociales .fa-instagram { color: #E1306C; }
+    .redes-sociales .fa-twitch { color: #9147FF; }
+    .redes-sociales .fa-discord { color: #5865F2; }
+
+    .redes-sociales a i {
+      transition: transform 0.3s, color 0.3s;
+    }
+    /* Hover para PC */
+    .redes-sociales a:hover .fa-tiktok {
+      color: #69C9D0;
+      transform: scale(1.2) rotate(-10deg);
+    }
+    .redes-sociales a:hover .fa-instagram {
+      color: #FCAF45;
+      transform: scale(1.2) rotate(-10deg);
+    }
+    .redes-sociales a:hover .fa-twitch {
+      color: #A970FF;
+      transform: scale(1.2) rotate(-10deg);
+    }
+    .redes-sociales a:hover .fa-discord {
+      color: #7289DA;
+      transform: scale(1.2) rotate(-10deg);
+    }
+    /* Active y focus para móvil */
+    .redes-sociales a:active .fa-tiktok,
+    .redes-sociales a:focus .fa-tiktok {
+      color: #69C9D0;
+      transform: scale(1.2) rotate(10deg);
+    }
+    .redes-sociales a:active .fa-instagram,
+    .redes-sociales a:focus .fa-instagram {
+      color: #FCAF45;
+      transform: scale(1.2) rotate(10deg);
+    }
+    .redes-sociales a:active .fa-twitch,
+    .redes-sociales a:focus .fa-twitch {
+      color: #A970FF;
+      transform: scale(1.2) rotate(10deg);
+    }
+    .redes-sociales a:active .fa-discord,
+    .redes-sociales a:focus .fa-discord {
+      color: #7289DA;
+      transform: scale(1.2) rotate(10deg);
+    }
